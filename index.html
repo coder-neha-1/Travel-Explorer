@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Travel Explorer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #55c1dc;
+            padding: 30px;}
+
+        h1 {
+            color: #2413e0;}
+
+        .btn {
+            font-size: 18px;
+            padding: 12px 20px;
+            margin: 10px;
+            background-color: #f546bb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer; }
+
+            
+        .btn:hover { background-color: #e65100;}
+
+        .card {
+            background: white;
+            width: 300px;
+            margin: 20px auto;
+            padding: 15px;
+            border-radius: 12px; }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            border-radius: 8px;
+            object-fit: cover;}
+
+        .price {
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 18px; }
+    </style>
+</head>
+<body>
+
+    <h1>🏖️ Pick Your Destination ✈️</h1>
+    <p>Click a button below to view places and prices!</p>
+
+    <!-- BUTTONS -->
+    <button class="btn" onclick="showParis()">🇫🇷 Paris</button>
+    <button class="btn" onclick="showGoa()">🇮🇳 Goa</button>
+    <button class="btn" onclick="showTokyo()">🇯🇵 Tokyo</button>
+
+    <!-- CONTENT DISPLAY AREA -->
+    <div id="content">
+        <p style="margin-top: 30px;"><i>Click any button above!</i></p>
+    </div>
+
+    <script>
+        // SAFE CLICK SOUND
+        function clickSound() {
+            try {
+                let ctx = new (window.AudioContext || window.webkitAudioContext)();
+                let osc = ctx.createOscillator();
+                osc.type = 'sine';
+                osc.frequency.value = 500;
+                osc.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.08);
+            } catch(e) {}
+        }
+
+        // SHOW PARIS
+        function showParis() {
+            clickSound();
+            document.getElementById("content").innerHTML = `
+                <div class="card">
+                    <img src="https://i.natgeofe.com/k/c41b4f59-181c-4747-ad20-ef69987c8d59/eiffel-tower-night.jpg?wp=1&w=1084.125&h=1627.5">
+                    <h2>Grand Eiffel Hotel</h2>
+                    <p>🏨 Type: Hotel</p>
+                    <p class="price">₹7150 / night</p>
+                </div>
+            `;
+        }
+
+        // SHOW GOA
+        function showGoa() {
+            clickSound();
+            document.getElementById("content").innerHTML = `
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=400">
+                    <h2>Sunny Beach Resort</h2>
+                    <p>🏨 Type: Hotel</p>
+                    <p class="price">₹3,000 / night</p>
+                </div>
+            `;
+        }
+
+        // SHOW TOKYO
+        function showTokyo() {
+            clickSound();
+            document.getElementById("content").innerHTML = `
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=400">
+                    <h2>Tokyo Tower Hotel</h2>
+                    <p>🏨 Type: Hotel</p>
+                    <p class="price">₹15,000 / night</p>
+                    
+                </div>
+            `;
+            
+        }
+    </script>
+</body>
+</html>
